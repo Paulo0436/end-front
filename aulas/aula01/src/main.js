@@ -31,4 +31,4 @@ botao.addEventListener("click" , function(e){
         senhaErro.textContent = "Senha deve conter pelo menos 8 caracters"
         return;
     }
-});
+})
