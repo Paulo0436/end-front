@@ -1,14 +1,15 @@
-import logo from "../assets/learn.svg"
-import Menu from "./menu";
+import logo from '../assets/learn.svg'
+import Menu from './Menu';
 
-function Sidebar(){
+function Sidebar() {
     return <aside>
         <header>
-            <img src= {logo} alt="logotipo" />
+            <img src={logo} alt="logotipo" />
             <h1>Aluno Online</h1>
+            <Menu/>
         </header>
-        <Menu />
     </aside>
+    
 }
 
 export default Sidebar;
