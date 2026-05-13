@@ -11,7 +11,7 @@ function Menu() {
   return (
     <nav>
       <h4>{usuario.nome}</h4>
-      <h5>{usuario.senha}</h5>
+      <h5>{usuario.email}</h5>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
