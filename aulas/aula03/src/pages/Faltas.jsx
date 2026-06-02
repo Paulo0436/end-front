@@ -1,14 +1,9 @@
-import Sidebar from "../components/Sidebar";
-import Tabela from "../components/Tabela";
-import Topbar from "../components/Topbar";
 import Layout from "./Layout";
+import Tabela from "../components/Tabela";
 
 function Faltas() {
   return (
-    <Layout
-    titulo = "Minhas Faltas "
-    subtitulo = "Historico de Falyes por Semestre"
-    >
+    <Layout titulo="Minhas Faltas" subtitulo="Histórico de Faltas por Semestre">
       <Tabela />
       <Tabela />
       <Tabela />

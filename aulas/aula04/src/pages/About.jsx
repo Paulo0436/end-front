@@ -1,9 +1,10 @@
+
 function About() {
-  return (
+    return (
     <>
-      <h1> Sobre a Aplicação</h1>
+        <h1>Sobre a aplicação</h1>
     </>
-  );
+    )
 }
 
-export default About;
+export default About

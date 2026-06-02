@@ -1,38 +1,24 @@
 import "./Menu.css";
-import { Link, NavLink } from "react-router";
 import { useAuthContext } from "../contexts/AuthContext";
+import { NavLink, Link } from "react-router";
 
-function Menu() {
-  const usuarioId = 0; //pegou da API
-  const { logout , usuario} = useAuthContext();
-  const handleSair = () => {
-    logout();
-  };
-  return (
-    <nav>
-      <h4>{usuario.nome}</h4>
-      <h5>{usuario.email}</h5>
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/perfil/${usuarioId}`}>Perfil</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">Sobre</NavLink>
-        </li>
-        <li>
-          <NavLink to="/settings">Configurações</NavLink>
-        </li>
-        <li>
-          <Link to="/" onClick={handleSair}>
-            Sair
-          </Link>
-        </li>
-      </ul>
+export default function Menu(){
+    const usuarioId = 0;
+    const { logout, usuario } = useAuthContext();
+    
+    const handleSair = () =>{ 
+        logout()       
+    }
+
+    return <nav>
+        <ul>
+            <h4>{usuario.nome}</h4>
+            <h3>{usuario.email}</h3>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to={`/perfil/${usuarioId}`}>Perfil</NavLink></li>
+            <li><NavLink to="/about">Sobre</NavLink></li>
+            <li><NavLink to="/settings">Configurações</NavLink></li>
+            <li><Link to="/" onClick={handleSair}>Sair</Link></li>
+        </ul>
     </nav>
-  );
 }
-
-export default Menu;
