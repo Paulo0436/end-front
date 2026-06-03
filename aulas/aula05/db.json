@@ -1,5 +1,30 @@
 {
-  "produtos": [],
+  "produtos": [
+    {
+      "nome": "Cinta",
+      "preco": "200000",
+      "unidade": "1",
+      "id": "CHNgr3MxKS0"
+    },
+    {
+      "nome": "",
+      "preco": "",
+      "unidade": "",
+      "id": "4-1_MEryeFc"
+    },
+    {
+      "nome": "Luket",
+      "preco": "-1",
+      "unidade": "-12",
+      "id": "WB7dVXnbrps"
+    },
+    {
+      "nome": "Luketa",
+      "preco": "cara de pau",
+      "unidade": "0",
+      "id": "wXHPQWGvCD0"
+    }
+  ],
   "clientes": [],
   "fornecedores": [],
   "pedidos": [],
