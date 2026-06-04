@@ -1,17 +1,15 @@
-import logo from '../assets/learn.svg'
-import Menu from './Menu';
-
 function Sidebar() {
-    return <aside className='hidden bg-gray-200 md:flex flex-1 p-5 max-w-70 justify-center text-left'>
-        <header className='flex-col'>
-            <section className='flex p-2 gap-2 mb-6'>
-                <img src={logo} alt="logotipo"/>
-                <h1 className='text-2xl font-bold'>Aluno Online</h1>
-            </section>
-            <Menu/>
-        </header>
-    </aside>
-    
+  return (
+    <nav className="w-48 bg-gray-100 p-4 min-h-screen md:block hidden">
+      <ul className="list-none p-0">
+        <li className="mb-4 hover:bg-gray-200 p-2 cursor-pointer">Dashboard</li>
+        <li className="mb-4 hover:bg-gray-200 p-2 cursor-pointer">Faltas</li>
+        <li className="mb-4 hover:bg-gray-200 p-2 cursor-pointer">Notas</li>
+        <li className="mb-4 hover:bg-gray-200 p-2 cursor-pointer">Boletos</li>
+        <li className="mb-4 hover:bg-gray-200 p-2 cursor-pointer">Requerimentos</li>
+      </ul>
+    </nav>
+  );
 }
 
 export default Sidebar;
