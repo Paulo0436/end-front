@@ -1,9 +1,12 @@
-import Layout from "./Layout";
 import Tabela from "../components/Tabela";
+import Layout from "./Layout";
 
 function Faltas() {
   return (
-    <Layout titulo="Minhas Faltas" subtitulo="Histórico de Faltas por Semestre">
+    <Layout 
+        titulo="Minhas Faltas" 
+        subtitulo="Histórico de Faltas por Semestre"
+    >
       <Tabela />
       <Tabela />
       <Tabela />

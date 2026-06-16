@@ -1,38 +1,61 @@
-import { useEffect } from "react";
-import { Link, useNavigate,useParams } from "react-router";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { criar, modificar, obter } from "../services/produtoService";
+import { Link, useNavigate, useParams } from "react-router";
+import { atualizar, criar, obter } from "../services/produtoService";
 
 function Formulario() {
+  const [erro, setErro] = useState();
   const { id } = useParams();
-  const { register, handleSubmit ,reset } = useForm();
   const navigate = useNavigate();
+  const { register, handleSubmit, reset } = useForm();
 
-  const salvar = async (dados) =>{
-    if(id){
-      await modificar({id,...dados});
-    }else{
-      await criar(dados)
+  const salvar = async (dados) => {
+    try {
+      if (id) {
+        await atualizar({ id, ...dados });
+      } else {
+        await criar(dados);
+      }
+      navigate("/produtos");
+    } catch (error) {
+      setErro(error.message);
     }
-    navigate("/produtos");
-  }
+  };
 
   useEffect(() => {
-    const disparar = async () =>{
-      const produto = await obter({id});
-      reset(produto);
+    if (!id) {
+      return;
     }
-    if(id) disparar();
-  },[])
+
+    const disparar = async () => {
+      const resposta = await obter({id});
+      reset(resposta);
+    }
+
+    disparar();
+  }, []);
+
   return (
     <>
       <h1>Cadastro de Produtos</h1>
+      <p>{erro}</p>
       <form onSubmit={handleSubmit(salvar)}>
-        <input type="text" placeholder="Nome" {...register("nome")} />
-        <input type="text" placeholder="Preço 0.00" {...register("preco")} />
-        <input type="text" placeholder="Unidade" {...register("unidade")} />
-        <Link to="/produtos">Desistir</Link>
-        <button type="subimit">Salvar</button>
+        <input
+          type="text"
+          placeholder="Nome do Produto"
+          {...register("nome")}
+        />
+        <input 
+          type="text" 
+          placeholder="Preço 0,00" 
+          {...register("preco")} />
+        <input 
+          type="text"
+          placeholder="Unidade" 
+          {...register("unidade")} 
+        />
+        <Link to="/produtos">Cancelar</Link>
+        <button type="submit">Salvar</button>
       </form>
     </>
   );

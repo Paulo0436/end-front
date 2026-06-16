@@ -1,15 +1,13 @@
-import Layout from "./Layout";
 import Tabela from "../components/Tabela";
+import Layout from "./Layout";
 
 function Requerimentos() {
   return (
-    <Layout
+    <Layout 
       titulo="Meus Requerimentos"
       subtitulo="Faça solicitações online para a secretaria"
     >
-      <Tabela />
-      <Tabela />
-      <Tabela />
+        <Tabela />
     </Layout>
   );
 }

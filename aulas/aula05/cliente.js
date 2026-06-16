@@ -27,16 +27,10 @@ async function obter(produto) {
 }
 
 // GET /
-async function listar(token) {
-  // simular uso do token
-  if (!token) {
-    throw new Error("401 Não autorizado");
-  }
+async function listar() {
   try {
     // gera uma requisicao HTTP no JS
-    const resposta = await fetch(url, {
-      headers: { Authorization: `Beraer ${token}`}
-    });
+    const resposta = await fetch(url);
     return await resposta.json();
   } catch (error) {
     return { message: `Deu ruim! ${error.code}-${error.message}` };

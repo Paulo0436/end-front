@@ -1,26 +1,25 @@
-import './App.css';
-//import logo from './assets/hero.png'
-import learnCap from './assets/learn.svg'
+import "./App.css";
+import logo from "./assets/learn.svg";
 
-function Cabecalho(){
-  return(
-        <div>
-          <header>Titulo</header>
-        </div>
+function Cabecalho() {
+  return (
+    <header>
+      <h1>Titulo</h1>
+    </header>
   );
 }
 
+// Prettier => ALT + SHIFT + F
 function App() {
+  // <div>
+  //   <Cabecalho />
+  //   <div>{2 + 2}</div>
+  //   <img src={logo} alt="" />
+  //   <p></p>
+  // </div>
   return (
     <main>
-      {
-      // <div>
-      //   <Cabecalho/>
-      //   <div>{6+61}</div>
-      //   <img src={logo} alt="" />
-      // </div>
-      }
-      <img src={learnCap} alt="Icone de um chapéu de ensino" />
+      <img src={logo} alt="Icone de um chapeu de formatura" />
       <h1>Aluno Online</h1>
       <label htmlFor="matricula">Matrícula</label>
       <input type="number" id="matricula" name="matricula" />
@@ -32,6 +31,5 @@ function App() {
     </main>
   );
 }
-
 
 export default App;

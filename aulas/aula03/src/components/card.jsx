@@ -12,5 +12,3 @@ function Card(props) {
 }
 
 export default Card;
-
-// Para redenrizar varios itens, utilizar a função .map

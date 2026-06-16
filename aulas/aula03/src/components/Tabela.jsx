@@ -9,15 +9,13 @@ function Tabela({ titulos, dados }) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          {dados.map((item, index) => (
-            <tr key={index}>
-              {Object.values(item).map((valor, index) => (
-                <td key={index}>{valor}</td>
-              ))}
-            </tr>
-          ))}
-        </tr>
+        {dados.map((item, index) => (
+          <tr key={index}>
+            {Object.values(item).map((valor, index) => (
+              <td key={index}>{valor}</td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );

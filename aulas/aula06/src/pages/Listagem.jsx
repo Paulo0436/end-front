@@ -1,49 +1,52 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { listar, remover } from "../services/produtoService";
+import { useAuthContext } from "../contexts/AuthContext";
 
 function Listagem() {
-  
-  //dispatch
   const [dados, setDados] = useState([]);
-  const trataRemover = async(produto) =>{
+  const navigate = useNavigate();
+  const { logout, usuario } = useAuthContext()
+
+  const trataRemover = async (produto) => {
     await remover(produto);
-    setDados(dados.filter(item => item.id !=produto.id))
+    setDados(dados.filter((item) => item.id != produto.id));
   }
+
   useEffect(() => {
-    const disparar = async () => {
-      const resposta = await listar();
+    const carregar = async () => {
+      const resposta = await listar(usuario.token);
       setDados(resposta);
     };
-    disparar();
+    carregar();
   }, []);
+
   return (
     <>
+      <Link to="/login" onClick={() => logout()}>Sair</Link>
       <h1>Listagem de Produtos</h1>
-      <Link to="/produtos/novo">+ Adicionar</Link>
+      <button onClick={() => navigate("/produtos/novo")}>Novo</button>
       <table>
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>Nome do Produto</th>
             <th>Preço</th>
             <th>Unidade</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-            {dados.map((item) => (
-                <tr key={item.id}>
-                    <td>{item.nome}</td>
-                    <td>{item.preco}</td>
-                    <td>{item.unidade}</td>
-                    <td>
-                        <Link to={`/produtos/editar/${item.id}`}>Editar</Link>
-                        |
-                        <Link to="/produtos" onClick={() => trataRemover(item)}>Remover</Link>
-                    </td>
-
-                </tr>
-            ))}
+          {dados.map((item) => (
+            <tr key={item.id}>
+              <td>{item.nome}</td>
+              <td>{item.preco}</td>
+              <td>{item.unidade}</td>
+              <td>
+                <Link to={`/produtos/editar/${item.id}`}>Editar</Link>|
+                <Link to="/produtos" onClick={() => trataRemover(item)}>Remover</Link>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>
