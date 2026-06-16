@@ -1,9 +1,9 @@
 import Boletos from "./pages/Boletos";
 import Dashboard from "./pages/Dashboard";
 import Faltas from "./pages/Faltas";
+import Login from "./pages/Login";
 import Notas from "./pages/Notas";
 import Requerimentos from "./pages/Requerimentos";
-import Login from "./pages/Login";
 
 function App() {
   const pagina = 0;

@@ -1,39 +1,38 @@
 import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext()
+// cria o contexto
+const AuthContext = createContext();
 
-function AuthProvider({children}){
-    const [logado , setLogado] = useState(false)
-    const [usuario , setUsuario] = useState({})
+// cria o provedor
+function AuthProvider({ children }) {
+  const [logado, setLogado] = useState(false);
+  const [usuario, setUsuario] = useState({});
 
-    const login = (dados) =>{
-        //chamar API passando os dados
-        setUsuario({nome: "Pads" ,email: "pads@iesb.edu.br"})
-        setLogado(true);
-    }
+  const login = (dados) => {
+    // chamar a API passando dados
+    setUsuario({ 
+        id: 0, 
+        nome: "Jose", 
+        email: "jose@iesb.edu.br" 
+    });
+    setLogado(true);
+  };
 
-    const logout = ()=>{
-        setUsuario({
-            id:0,
-            nome: "Pads" ,
-            email:"pads@iesb.edu.br" 
-        });
-        setLogado(false);
-    }
+  const logout = () => {
+    setUsuario({});
+    setLogado(false);
+  };
 
-    return(
-        <AuthContext.Provider value={{logado,usuario,login,logout}}>
-            {/* value = estado compartilhado*/} 
-            {children}
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider value={{ logado, usuario, login, logout }}>
+      {/* value =  estado compartilhado */}
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
-
-
-function useAuthContext(){
-    return useContext(AuthContext)
+function useAuthContext() {
+    return useContext(AuthContext);
 }
 
-
-export {useAuthContext , AuthProvider}
+export { useAuthContext, AuthProvider };

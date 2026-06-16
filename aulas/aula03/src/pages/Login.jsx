@@ -1,14 +1,13 @@
-import avatar from "../assets/learn.svg";
-import FormLogin from "../forms/FormLogin";
+import logo from '../assets/learn.svg';
+import FormLogin from '../forms/FormLogin';
 
 function Login() {
-  return (
-    <>
-      <img src={avatar} alt="Imagem do logo" />
-      <h1>Aluno Online</h1>
-     <FormLogin/>
-    </>
-  );
+
+  return <>
+    <img src={logo} alt="Imagem do Logo" />
+    <h1>Aluno Online</h1>
+    <FormLogin />
+  </>;
 }
 
 export default Login;

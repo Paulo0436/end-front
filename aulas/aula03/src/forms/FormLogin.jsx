@@ -1,24 +1,23 @@
-import BotaoSubmit from "../components/BotaoSubmit";
+import { useState } from "react";
 import InputMatricula from "../components/InputMatricula";
 import InputSenha from "../components/InputSenha";
-import { useState } from "react";
-
+import BotaoSubmit from "../components/BotaoSubmit";
 
 function FormLogin() {
   const [matricula, setMatricula] = useState();
   const [senha, setSenha] = useState();
-  const [senhaErro, setSenhaErro] = useState();
   const [matriculaErro, setMatriculaErro] = useState();
+  const [senhaErro, setSenhaErro] = useState();
 
   const trataSubmit = (e) => {
     e.preventDefault();
 
     if (!matricula) {
-      setMatriculaErro("Matrícula é obrigatório");
+      setMatriculaErro("Matrícula é obrigatorio");
     }
 
     if (!senha) {
-      setSenhaErro("Senha é obrigatória");
+      setSenhaErro("Senha é obrigatório");
     }
   };
 
@@ -34,16 +33,8 @@ function FormLogin() {
 
   return (
     <form onSubmit={trataSubmit}>
-      <InputMatricula
-        valor={matricula}
-        erro={matriculaErro}
-        mudaValor={mudaMatricula}
-      />
-      <InputSenha
-      valor={senha}
-      erro={senhaErro}
-      mudaValor={mudaSenha}
-      />
+      <InputMatricula erro={matriculaErro} mudaValor={mudaMatricula} />
+      <InputSenha erro={senhaErro} mudaValor={mudaSenha} />
       <BotaoSubmit>Entrar</BotaoSubmit>
     </form>
   );
