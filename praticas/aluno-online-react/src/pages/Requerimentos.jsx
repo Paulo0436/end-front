@@ -1,19 +1,43 @@
 import PageTitle from "../components/PageTitle";
 import Tabela from "../components/Tabela";
+import { NavLink } from "react-router";
+import { listar } from "../services/requerimentoService";
+import { useEffect, useState} from "react";
+import { useAuthContext } from "../context/authContext";
 
 export default function Requerimentos() {
+  const [requerimentos, setRequerimentos] = useState([]);
+  const { logout } = useAuthContext();
+  
+  useEffect(()=>{
+    const disparar = async ()=>{
+      try{
+        const itens  = await listar() 
+        let itensLimpos = [];
+        itens.forEach((item)=>{
+          itensLimpos.push([item.tipoRequerimento,item.dtrequerimento,item.situacaoRequerimento])
+        })
+        setRequerimentos(itensLimpos)
+      }catch(erro){
+          if (erro.message === "401") {
+            logout();
+        }
+      }
+
+    }
+    disparar()    
+  },[])
+  
   return (
     <>
       <PageTitle title="Faça solicitações online para a secretaria" />
-      <Tabela
+      <section  className="my-5">
+        <NavLink to="/requerimentos/novo-requerimento" className="my-5 p-2  bg-gray-300 hover:bg-gray-500">Novo requerimento</NavLink>
+      </section>
+      <Tabela 
         table={{
           header: ["Tipo de requerimento", "Data da solicitação", "Situação"],
-          rows: [
-            ["Requerimento de diploma", "01/01/2025", "Indeferido"],
-            ["Requerimento de histórico", "01/02/2025", "Aprovado"],
-            ["Requerimento de histórico", "11/08/2025", "Aprovado"],
-            ["Requerimento de histórico", "21/09/2025", "Aprovado"],
-          ],
+          rows: requerimentos,
         }}
       />
     </>
